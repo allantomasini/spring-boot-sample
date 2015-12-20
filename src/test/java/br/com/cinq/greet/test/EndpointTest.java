@@ -1,5 +1,7 @@
 package br.com.cinq.greet.test;
 
+import org.junit.Before;
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
@@ -9,6 +11,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.client.RestTemplate;
 
 import br.com.cinq.greet.Application;
+import br.com.cinq.greet.message.Greeting;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(classes=Application.class)
@@ -20,6 +23,14 @@ public class EndpointTest {
 
 	private RestTemplate restTemplate = new TestRestTemplate();
 	
-	// Implement tests...
+	
+	
+	@Test
+	public void validarGet(){
+		Greeting greeting = restTemplate.getForObject("http://localhost:8080/greeting", Greeting.class);
+		System.out.println(port);
+		
+	}
+	
 
 }
